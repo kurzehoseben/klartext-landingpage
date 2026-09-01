@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Klartext — Ben Buckenmaier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15181D;
+    --paper:#FFFFFF;
+    --signal:#FF5C39;
+    --stone:#6E6D68;
+    --stone-light:#E7E5DF;
+    --paper-warm:#F7F6F3;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 40px;}
+  a{color:inherit;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--stone-light);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:76px; }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand .mark{ font-family:'Fraunces',serif; font-size:30px; font-weight:600; color:var(--signal); line-height:0.6;}
+  .brand .word{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+  .navlinks{ display:flex; gap:36px; font-size:14.5px; font-weight:500; }
+  .navlinks a{ text-decoration:none; color:var(--ink); }
+  .nav-cta{
+    background:var(--ink); color:var(--paper);
+    padding:11px 22px; border-radius:2px; font-size:14px; font-weight:600;
+    text-decoration:none;
+  }
+
+  /* HERO */
+  .hero{
+    background:var(--ink); color:var(--paper);
+    padding:130px 0 110px;
+    position:relative; overflow:hidden;
+  }
+  .hero .quote-mark{
+    font-family:'Fraunces', serif; font-size:420px; font-weight:600;
+    position:absolute; top:-130px; right:-60px;
+    color:#FFFFFF0D; line-height:1; pointer-events:none;
+  }
+  .hero-inner{ max-width:760px; position:relative; }
+  .eyebrow{ color:var(--signal); font-size:14px; font-weight:600; margin-bottom:20px; }
+  .hero h1{ font-size:60px; font-weight:600; line-height:1.08; letter-spacing:-0.01em; }
+  .hero p.sub{ margin-top:26px; font-size:19px; color:#C9C8C3; max-width:560px; }
+  .hero .cta-row{ margin-top:42px; display:flex; gap:18px; align-items:center; }
+  .btn-primary{
+    background:var(--signal); color:var(--paper); text-decoration:none;
+    padding:16px 30px; font-weight:600; font-size:15px; border-radius:2px; display:inline-block;
+  }
+  .btn-ghost{ color:var(--paper); text-decoration:none; font-weight:600; font-size:15px; border-bottom:2px solid #FFFFFF40; padding-bottom:2px;}
+
+  /* STRENGTH SECTION */
+  section{ padding:100px 0; }
+  .section-label{ font-size:14px; font-weight:600; color:var(--signal); margin-bottom:16px; }
+  h2.section-title{ font-family:'Fraunces', serif; font-size:38px; font-weight:600; max-width:600px; line-height:1.15; }
+
+  .strength-layout{ display:grid; grid-template-columns:1.1fr 1fr; gap:70px; margin-top:56px; align-items:start; }
+  .strength-quote{
+    font-family:'Fraunces', serif; font-size:30px; font-weight:500;
+    line-height:1.35; color:var(--ink);
+  }
+  .strength-quote .mark{ color:var(--signal); }
+  .strength-list{ display:flex; flex-direction:column; gap:28px; }
+  .strength-item{ border-top:1px solid var(--stone-light); padding-top:20px; }
+  .strength-item h3{ font-size:17px; font-weight:600; margin-bottom:8px; }
+  .strength-item p{ font-size:14.5px; color:var(--stone); }
+
+  /* CASE STUDY */
+  .case-section{ background:var(--paper-warm); }
+  .case-card{
+    background:var(--paper); border:1px solid var(--stone-light);
+    display:grid; grid-template-columns:1fr 1.3fr;
+    margin-top:56px;
+  }
+  .case-visual{
+    background:var(--ink); color:var(--paper);
+    padding:48px 40px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .case-visual .tag{ font-size:13px; color:var(--signal); font-weight:600; margin-bottom:14px;}
+  .case-visual h3{ font-family:'Fraunces',serif; font-size:26px; font-weight:600; }
+  .case-stats{ display:flex; gap:32px; margin-top:30px; }
+  .case-stats .stat-num{ font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--signal);}
+  .case-stats .stat-label{ font-size:12px; color:#C9C8C3; margin-top:4px; }
+  .case-body{ padding:48px 44px; }
+  .case-body p{ font-size:15px; color:var(--stone); margin-bottom:16px; max-width:520px; }
+  .case-body ul{ list-style:none; margin-top:20px; }
+  .case-body li{ font-size:14px; padding:10px 0; border-top:1px solid var(--stone-light); display:flex; justify-content:space-between; }
+  .case-body li span:last-child{ color:var(--stone); }
+
+  /* SERVICES */
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--stone-light); margin-top:56px; border:1px solid var(--stone-light); }
+  .service-card{ background:var(--paper); padding:38px 32px; }
+  .service-card .idx{ font-family:'Fraunces',serif; color:var(--signal); font-size:15px; font-weight:600; margin-bottom:22px; }
+  .service-card h3{ font-size:18px; font-weight:600; margin-bottom:10px; }
+  .service-card p{ font-size:14px; color:var(--stone); }
+
+  /* CONTACT */
+  .contact-section{ background:var(--ink); color:var(--paper); text-align:left; }
+  .contact-inner{ max-width:640px; }
+  .contact-inner h2{ font-family:'Fraunces',serif; font-size:42px; font-weight:600; line-height:1.15; }
+  .contact-inner p{ margin-top:20px; font-size:17px; color:#C9C8C3; }
+  .contact-cta{ margin-top:38px; display:flex; gap:18px; flex-wrap:wrap; }
+
+  footer{ padding:36px 0; border-top:1px solid var(--stone-light); }
+  footer .wrap{ display:flex; justify-content:space-between; font-size:13px; color:var(--stone); }
+
+  @media (max-width:860px){
+    .hero h1{ font-size:40px; }
+    .strength-layout{ grid-template-columns:1fr; gap:36px; }
+    .case-card{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:1fr; }
+    .navlinks{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><div class="mark">„</div><div class="word">Klartext</div></div>
+    <div class="navlinks">
+      <a href="#staerke">Stärke</a>
+      <a href="#projekt">Projekt</a>
+      <a href="#angebot">Angebot</a>
+    </div>
+    <a class="nav-cta" href="#kontakt">Gespräch buchen</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="quote-mark">„</div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">SALES &amp; MARKETING · DIGITALFOKUS</div>
+      <h1 class="display">Ich mache aus Fachchinesisch Kundengespräche, die verkaufen.</h1>
+      <p class="sub">Ben Buckenmaier — Vertrieb und Marketing für digitale Produkte, übersetzt in Sätze, die im Meeting ankommen statt im Prospekt zu verstauben.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#kontakt">Projekt besprechen</a>
+        <a class="btn-ghost" href="#projekt">Aktuelles Projekt ansehen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="staerke">
+  <div class="wrap">
+    <div class="section-label">DIE STÄRKE</div>
+    <h2 class="section-title">Kundenverständnis ist kein Soft Skill. Es ist die eigentliche Arbeit.</h2>
+
+    <div class="strength-layout">
+      <div class="strength-quote">
+        <span class="mark">„</span>Die beste Kampagne bringt nichts, wenn der Kunde beim zweiten Satz aussteigt. Ich baue Botschaften vom Verständnis der Zielgruppe aus — nicht vom Produkt aus.
+      </div>
+      <div class="strength-list">
+        <div class="strength-item">
+          <h3>Zuhören vor Formulieren</h3>
+          <p>Jedes Projekt beginnt mit echten Fragen an die Zielgruppe — nicht mit einer fertigen Botschaft, die nur noch hübsch verpackt wird.</p>
+        </div>
+        <div class="strength-item">
+          <h3>Digital denken, menschlich sprechen</h3>
+          <p>SEO, CMS, Ads-Daten und Conversion-Pfade sind das Handwerkszeug — die Sprache nach außen bleibt einfach und direkt.</p>
+        </div>
+        <div class="strength-item">
+          <h3>Ergebnisse statt Behauptungen</h3>
+          <p>Jede Empfehlung wird an echten Daten geprüft und korrigiert, wenn die Zahlen etwas anderes sagen als die erste Annahme.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="case-section" id="projekt">
+  <div class="wrap">
+    <div class="section-label">AKTUELLES PROJEKT</div>
+    <h2 class="section-title">YogaBali — vom Website-Audit zur Marketingstrategie</h2>
+
+    <div class="case-card">
+      <div class="case-visual">
+        <div>
+          <div class="tag">CASE STUDY</div>
+          <h3>Digitalstrategie für ein Bali-Yoga-Retreat</h3>
+        </div>
+        <div class="case-stats">
+          <div><div class="stat-num">6</div><div class="stat-label">Seiten geprüft</div></div>
+          <div><div class="stat-num">3</div><div class="stat-label">Kanäle strategisiert</div></div>
+          <div><div class="stat-num">1</div><div class="stat-label">korrigierte Annahme</div></div>
+        </div>
+      </div>
+      <div class="case-body">
+        <p>Für das Angebot „Yoga Urlaub Bali" habe ich Kurzresearch, Website-Audit und eine kanalübergreifende Marketingstrategie zusammengeführt — von der Zielgruppenanalyse bis zur konkreten Customer Journey.</p>
+        <p>Statt aus dem Bauch heraus zu planen, wurde jede Entscheidung an echten Daten (Suchbegriffe, Auktionsdaten, Seitenstruktur) geprüft — inklusive einer eigenen Annahme, die ich nach Prüfung revidiert habe.</p>
+        <ul>
+          <li><span>Zielgruppe</span><span>Erholungssuchende Yoga-Enthusiast:innen</span></li>
+          <li><span>Kernkanäle</span><span>SEO, Instagram, E-Mail</span></li>
+          <li><span>Ergebnis</span><span>Klare Customer Journey bis zur Anfrage</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="angebot">
+  <div class="wrap">
+    <div class="section-label">ANGEBOT</div>
+    <h2 class="section-title">Drei Bereiche, ein Anspruch: verständlich verkaufen.</h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="idx">01</div>
+        <h3>Vertrieb &amp; Kundengespräch</h3>
+        <p>Leistungsversprechen und Gesprächsleitfäden, die Einwände vorwegnehmen statt sie zu ignorieren.</p>
+      </div>
+      <div class="service-card">
+        <div class="idx">02</div>
+        <h3>Digitale Positionierung</h3>
+        <p>Website-Audits und Marketingstrategien, die auf echten Nutzerdaten statt auf Vermutungen basieren.</p>
+      </div>
+      <div class="service-card">
+        <div class="idx">03</div>
+        <h3>Content &amp; Kanäle</h3>
+        <p>Botschaften pro Kanal, die zur jeweiligen Zielgruppe passen — kein Copy-Paste zwischen Instagram und E-Mail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="kontakt">
+  <div class="wrap">
+    <div class="contact-inner">
+      <h2 class="display">Lass uns über dein Projekt reden — im Klartext.</h2>
+      <p>Kein Pitch-Deck vorab nötig. Ein kurzes Gespräch reicht, um zu sehen, ob die Zusammenarbeit passt.</p>
+      <div class="contact-cta">
+        <a class="btn-primary" href="mailto:hallo@benbuckenmaier.de">Gespräch anfragen</a>
+        <a class="btn-ghost" href="#projekt">Zur Case Study</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>„ Klartext — Ben Buckenmaier</div>
+    <div>Portfolio-Projekt · Sales &amp; Marketing mit Digitalfokus</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>KLARTEXT — Brand Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15181D;
+    --paper:#FFFFFF;
+    --signal:#FF5C39;
+    --stone:#6E6D68;
+    --stone-light:#E7E5DF;
+    --paper-warm:#F7F6F3;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 40px;}
+
+  /* HERO */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:110px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .quote-mark{
+    font-family:'Fraunces', serif;
+    font-size:340px;
+    font-weight:600;
+    position:absolute;
+    top:-90px;
+    left:-30px;
+    color:#FFFFFF10;
+    line-height:1;
+    pointer-events:none;
+  }
+  .eyebrow{
+    color:var(--signal);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:64px;
+    font-weight:600;
+    line-height:1.05;
+    max-width:780px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.sub{
+    margin-top:26px;
+    font-size:19px;
+    color:#C9C8C3;
+    max-width:560px;
+  }
+
+  section{padding:80px 0;}
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-size:34px;
+    font-weight:600;
+    margin-bottom:12px;
+  }
+  p.section-desc{
+    color:var(--stone);
+    font-size:16px;
+    max-width:640px;
+    margin-bottom:48px;
+  }
+
+  /* COLORS */
+  .swatch-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+    border-top:1px solid var(--stone-light);
+    border-left:1px solid var(--stone-light);
+  }
+  .swatch{
+    border-right:1px solid var(--stone-light);
+    border-bottom:1px solid var(--stone-light);
+  }
+  .swatch .block{ height:150px; }
+  .swatch .label{ padding:18px 20px; }
+  .swatch .name{ font-weight:600; font-size:15px; margin-bottom:4px;}
+  .swatch .hex{ font-family:'Inter',monospace; color:var(--stone); font-size:13px;}
+  .swatch .role{ color:var(--stone); font-size:13px; margin-top:8px;}
+
+  /* TYPE */
+  .type-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:28px 0;
+    border-bottom:1px solid var(--stone-light);
+    gap:30px;
+  }
+  .type-row:first-child{border-top:1px solid var(--stone-light);}
+  .type-meta{ min-width:220px; }
+  .type-meta .role{ font-weight:600; font-size:14px; }
+  .type-meta .spec{ color:var(--stone); font-size:13px; margin-top:4px; }
+  .type-sample{ flex:1; }
+
+  /* LOGO */
+  .logo-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .logo-card{
+    background:var(--paper-warm);
+    border:1px solid var(--stone-light);
+    padding:0;
+  }
+  .logo-display{
+    height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--ink);
+  }
+  .logo-display.light{ background:var(--paper); border-bottom:1px solid var(--stone-light);}
+  .logo-info{ padding:24px; }
+  .logo-info .tag{ font-size:12px; font-weight:600; color:var(--signal); margin-bottom:8px; }
+  .logo-info h3{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; margin-bottom:10px;}
+  .logo-info p{ font-size:13.5px; color:var(--stone); }
+
+  .wordmark{ font-family:'Fraunces',serif; font-size:36px; font-weight:600; color:var(--paper); letter-spacing:-0.01em;}
+  .wordmark .u{ border-bottom:4px solid var(--signal); padding-bottom:2px; }
+  .bildmarke{ font-family:'Fraunces',serif; font-size:150px; font-weight:600; color:var(--signal); line-height:1;}
+  .combo{ display:flex; align-items:center; gap:14px; }
+  .combo .mark{ font-family:'Fraunces',serif; font-size:56px; font-weight:600; color:var(--signal); line-height:0.7;}
+  .combo .word{ font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--paper);}
+
+  /* VOICE */
+  .voice-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+  }
+  .voice-card .num{ font-family:'Fraunces',serif; font-size:15px; color:var(--signal); font-weight:600; margin-bottom:14px;}
+  .voice-card h3{ font-size:18px; font-weight:600; margin-bottom:10px;}
+  .voice-card p{ font-size:14px; color:var(--stone); }
+
+  footer{
+    background:var(--ink);
+    color:#8A8A85;
+    padding:40px 0;
+    font-size:13px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="quote-mark">„</div>
+    <div class="wrap">
+      <div class="eyebrow">BRAND GUIDE</div>
+      <h1 class="display">Klartext.<br>Vertrieb &amp; Marketing, verständlich gemacht.</h1>
+      <p class="sub">Ein Design-System für eine Personenmarke, deren größte Stärke ist, komplexe digitale Themen so zu erklären, dass Kunden sie sofort verstehen.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Farben</h2>
+      <p class="section-desc">Vier Farben, ein Auftritt. Ink trägt die Fläche, Signal setzt genau einen Akzent — wie ein Textmarker im Meeting-Protokoll.</p>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="block" style="background:#15181D;"></div>
+          <div class="label"><div class="name">Ink</div><div class="hex">#15181D</div><div class="role">Fläche, Headlines</div></div>
+        </div>
+        <div class="swatch">
+          <div class="block" style="background:#FF5C39;"></div>
+          <div class="label"><div class="name">Signal</div><div class="hex">#FF5C39</div><div class="role">Einziger Akzent, CTAs</div></div>
+        </div>
+        <div class="swatch">
+          <div class="block" style="background:#FFFFFF; border-bottom:1px solid #E7E5DF;"></div>
+          <div class="label"><div class="name">Paper</div><div class="hex">#FFFFFF</div><div class="role">Helle Flächen</div></div>
+        </div>
+        <div class="swatch">
+          <div class="block" style="background:#6E6D68;"></div>
+          <div class="label"><div class="name">Stone</div><div class="hex">#6E6D68</div><div class="role">Fließtext, sekundär</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--paper-warm);">
+    <div class="wrap">
+      <h2 class="section-title">Typografie</h2>
+      <p class="section-desc">Fraunces für Haltung, Inter für Klarheit — zwei Stimmen, die sich nie ins Wort fallen.</p>
+
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Display / H1</div><div class="spec">Fraunces · 600 · 56–64px</div></div>
+        <div class="type-sample display" style="font-size:48px; font-weight:600;">Klartext verkauft besser.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Section-Titel / H2</div><div class="spec">Fraunces · 600 · 30–34px</div></div>
+        <div class="type-sample display" style="font-size:30px; font-weight:600;">Was ich anders mache</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Fließtext / Body</div><div class="spec">Inter · 400 · 16–17px</div></div>
+        <div class="type-sample" style="font-size:16px; max-width:480px;">Ich übersetze Marketing-Fachchinesisch in Sätze, die im Kundengespräch tatsächlich ankommen.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Label / Eyebrow</div><div class="spec">Inter · 600 · 13–14px</div></div>
+        <div class="type-sample" style="font-size:13px; font-weight:600; color:var(--signal);">Case Study</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Logo-Konzept</h2>
+      <p class="section-desc">Drei Richtungen, eine Idee: das Anführungszeichen „ als eigenständiges Zeichen für „im Klartext sprechen" — bewusst kein generisches Sprechblasen-Icon.</p>
+      <div class="logo-grid">
+
+        <div class="logo-card">
+          <div class="logo-display"><div class="wordmark">KLA<span class="u">R</span>TEXT</div></div>
+          <div class="logo-info">
+            <div class="tag">WORTMARKE</div>
+            <h3>1 · Die Unterstreichung</h3>
+            <p>Reine Typografie in Fraunces, ein Buchstabe mit Signal-Unterstrich — wie das Markieren des wichtigsten Worts im Satz. Portfolio-Argument: zeigt, dass Klarheit im Detail entsteht, nicht durch Dekoration.</p>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-display"><div class="bildmarke">„</div></div>
+          <div class="logo-info">
+            <div class="tag">BILDMARKE</div>
+            <h3>2 · Das Zitat</h3>
+            <p>Ein einzelnes, überdimensioniertes Anführungszeichen als Icon. Steht für "zitiert werden" und "auf den Punkt bringen" — ownbar, weil kein anderer Anbieter im Sales/Marketing-Umfeld diese Form besetzt.</p>
+          </div>
+        </div>
+
+        <div class="logo-card">
+          <div class="logo-display"><div class="combo"><div class="mark">„</div><div class="word">Klartext</div></div></div>
+          <div class="logo-info">
+            <div class="tag">KOMBINATIONSMARKE</div>
+            <h3>3 · Das Lockup</h3>
+            <p>Zeichen und Wortmarke kombiniert — die Primärversion für die Landingpage. Funktioniert horizontal im Header und als reines Zeichen im Favicon.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--ink); color:var(--paper);">
+    <div class="wrap">
+      <h2 class="section-title" style="color:var(--paper);">Brand Voice</h2>
+      <p class="section-desc" style="color:#B8B7B2;">Drei Prinzipien, die jede Zeile Text auf der Marke tragen müssen.</p>
+      <div class="voice-grid">
+        <div class="voice-card">
+          <div class="num">01</div>
+          <h3 style="color:var(--paper);">Direkt statt aufgeblasen</h3>
+          <p style="color:#B8B7B2;">Kurze Sätze, aktive Verben, keine Buzzwords. Wenn ein Kind das Angebot nicht versteht, ist der Satz zu lang.</p>
+        </div>
+        <div class="voice-card">
+          <div class="num">02</div>
+          <h3 style="color:var(--paper);">Warm statt distanziert</h3>
+          <p style="color:#B8B7B2;">Duzt die Leserin, spricht von "du" und "wir" statt von "der Kunde" — Kundenverständnis beginnt beim Ton.</p>
+        </div>
+        <div class="voice-card">
+          <div class="num">03</div>
+          <h3 style="color:var(--paper);">Belegt statt behauptet</h3>
+          <p style="color:#B8B7B2;">Jede Aussage bekommt ein sichtbares Beispiel oder Ergebnis — nie ein Adjektiv ohne Beleg dahinter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">KLARTEXT — Brand Guide · Erstellt für das Portfolio-Projekt von Ben Buckenmaier</div>
+  </footer>
+
+</body>
+</html>
